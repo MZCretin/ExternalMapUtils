@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_gaode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e1e1e1"/>
+
+            <Button
+                android:id="@+id/btn_select_gaode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_bg_selector"
+                android:text="高德地图"
+                android:textColor="#4a4a4a"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_baidu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e1e1e1"/>
+
+            <Button
+                android:id="@+id/btn_select_baidu"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_bg_selector"
+                android:text="百度地图"
+                android:textColor="#4a4a4a"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e1e1e1"/>
+
+        <Button
+            android:id="@+id/btn_select_pic_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_bg_selector"
+            android:text="取消"
+            android:textColor="#797979"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+</RelativeLayout>
