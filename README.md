@@ -1,6 +1,7 @@
 #ExternalMapuUilsLibrary
 
 ##最新版本V1.0.0
+png文件夹下有截图文件 自行查看
 
 ##使用方式：
 
@@ -13,13 +14,23 @@ allprojects { repositories { ... maven { url 'https://jitpack.io' } } }
 
 **Step 2.** Add the dependency
 ```gradle
-dependencies { compile 'com.github.MZCretin:AutoUpdateProject:v1.0' }
+dependencies { compile 'com.github.MZCretin:ExternalMapUtils:v1.0.0' }
 ```
 
 **Step 3.** Start using it wherever you want as below.
 
 ```
-CretinAutoUpdateUtils.getInstance(MainActivity.this).check();
+//打开路径规划
+OpenExternalMapAppUtils.openMapDirection(this, split[0], split[1], sName,
+                split1[0], split1[1], dName, "测试DEMO");
+//打开marker一个点   
+OpenExternalMapAppUtils.openMapMarker(this, longitude, latitude, name, des, "测试DEMO");
+//打开网页版导航
+OpenExternalMapAppUtils.openBrosserNaviMap(this, split[0], split[1], sName,
+                split1[0], split1[1], dName, "深圳", "测试DEMO");
+//打开app端导航 使用高德和百度
+OpenExternalMapAppUtils.openMapNavi(this, longitude, latitude, name, des, "测试DEMO");
+                
 ```
 
 
