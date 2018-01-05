@@ -1,6 +1,6 @@
 # ExternalMapuUilsLibrary
 
-## 最新版本V1.0.0
+## 最新版本V1.1.0
 png文件夹下有截图文件 自行查看
 
 ![image](https://github.com/MZCretin/ExternalMapUtils/blob/master/png/Screenshot_20170509-152819.png)
