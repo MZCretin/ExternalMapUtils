@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.cretin.www.externalmaputilslibrary.popwindow.SelectPopupWindow;
+import com.cretin.www.externalmaputilslibrary.web.TbWebViewActivity;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -47,7 +48,67 @@ public class OpenExternalMapAppUtils {
             }
         } else {
             //没有安装客户端 打开网页版
-            openBrosserMarkerMap(activity, longitude, latitude, appName, title, content);
+            openBrosserMarkerMap(activity, longitude, latitude, appName, title, content, false);
+        }
+    }
+
+    //打开地图显示位置
+    public static void openMapMarker(Activity activity, String longitude, String latitude,
+                                     String title, String content, String appName, boolean useOutWeb) {
+        List<String> mapApps = getMapApps(activity);
+        if ( mapApps != null && !mapApps.isEmpty() ) {
+            //有安装客户端 打开PopWindow显示数据
+            if ( mapApps.contains(paks[0]) && mapApps.contains(paks[1]) ) {
+                showAlertDialog(activity, TYPE_MAPVIEW_WITH_TIPS, true,
+                        true, longitude, latitude, title, "", "", "", content, appName);
+            } else if ( mapApps.contains(paks[0]) ) {
+                showAlertDialog(activity, TYPE_MAPVIEW_WITH_TIPS, true, false,
+                        longitude, latitude, title, "", "", "", content, appName);
+            } else if ( mapApps.contains(paks[1]) ) {
+                showAlertDialog(activity, TYPE_MAPVIEW_WITH_TIPS, false, true,
+                        longitude, latitude, title, "", "", "", content, appName);
+            }
+        } else {
+            //没有安装客户端 打开网页版
+            openBrosserMarkerMap(activity, longitude, latitude, appName, title, content, useOutWeb);
+        }
+    }
+
+
+    /**
+     * 打开地图显示位置
+     *
+     * @param activity
+     * @param longitude
+     * @param latitude
+     * @param title
+     * @param content
+     * @param appName
+     * @param useOutWeb
+     * @param forceUseBro 强制使用浏览器打开 不考虑是否有app
+     */
+    public static void openMapMarker(Activity activity, String longitude, String latitude,
+                                     String title, String content, String appName, boolean useOutWeb, boolean forceUseBro) {
+        if ( forceUseBro ) {
+            openBrosserMarkerMap(activity, longitude, latitude, appName, title, content, useOutWeb);
+        } else {
+            List<String> mapApps = getMapApps(activity);
+            if ( mapApps != null && !mapApps.isEmpty() ) {
+                //有安装客户端 打开PopWindow显示数据
+                if ( mapApps.contains(paks[0]) && mapApps.contains(paks[1]) ) {
+                    showAlertDialog(activity, TYPE_MAPVIEW_WITH_TIPS, true,
+                            true, longitude, latitude, title, "", "", "", content, appName);
+                } else if ( mapApps.contains(paks[0]) ) {
+                    showAlertDialog(activity, TYPE_MAPVIEW_WITH_TIPS, true, false,
+                            longitude, latitude, title, "", "", "", content, appName);
+                } else if ( mapApps.contains(paks[1]) ) {
+                    showAlertDialog(activity, TYPE_MAPVIEW_WITH_TIPS, false, true,
+                            longitude, latitude, title, "", "", "", content, appName);
+                }
+            } else {
+                //没有安装客户端 打开网页版
+                openBrosserMarkerMap(activity, longitude, latitude, appName, title, content, useOutWeb);
+            }
         }
     }
 
@@ -80,7 +141,7 @@ public class OpenExternalMapAppUtils {
                         sLongitude, sLatitude, sName, dLongitude, dLatitude, dName, "", appName);
             }
         } else {
-            //没有安装客户端 打开网页版
+            //没有安装客户端 但是又没有网页版的 提示
             Toast.makeText(activity, "请下载百度或高德地图客户端", Toast.LENGTH_SHORT).show();
         }
     }
@@ -105,7 +166,7 @@ public class OpenExternalMapAppUtils {
                         longitude, latitude, title, "", "", "", content, appName);
             }
         } else {
-            //没有安装客户端 打开网页版
+            //没有安装客户端 但是又没有网页版的 提示
             Toast.makeText(activity, "请下载百度或高德地图客户端", Toast.LENGTH_SHORT).show();
         }
     }
@@ -115,9 +176,20 @@ public class OpenExternalMapAppUtils {
      * {@link #openMapNavi}
      */
     public static void openMapNaviWithTwoPoints(Activity activity, String sLongitude, String sLatitude,
-                                                String sName, String dLongitude, String dLatitude, String dName,String region, String appName) {
+                                                String sName, String dLongitude, String dLatitude, String dName, String region, String appName) {
         //百度地图网页版导航必须提供两个坐标点
-        openBrosserNaviMap(activity,sLongitude,sLatitude,sName,dLongitude,dLatitude,dName,region,appName);
+        openBrosserNaviMap(activity, sLongitude, sLatitude, sName, dLongitude, dLatitude, dName, region, appName, false);
+
+    }
+
+    /**
+     * 打开地图导航 如果需要调用网页版导航 需要提供两个点 只提供一个点的请调用 设置是否需要调用外部浏览器打开
+     * {@link #openMapNavi}
+     */
+    public static void openMapNaviWithTwoPoints(Activity activity, String sLongitude, String sLatitude,
+                                                String sName, String dLongitude, String dLatitude, String dName, String region, String appName, boolean useOutWeb) {
+        //百度地图网页版导航必须提供两个坐标点
+        openBrosserNaviMap(activity, sLongitude, sLatitude, sName, dLongitude, dLatitude, dName, region, appName, useOutWeb);
 
     }
     //************************************************************************
@@ -317,30 +389,56 @@ public class OpenExternalMapAppUtils {
      * @param longitude
      * @param latitude
      * @param appName
+     * @param useOutWeb 是否调用外部的浏览器 默认不调用
      */
     public static void openBrosserMarkerMap(Context activity, String longitude, String latitude,
-                                            String appName, String title, String content) {
-        Uri mapUri = Uri.parse("http://api.map.baidu.com/marker?location=" + latitude + "," + longitude +
-                "&title=" + title + "&content=" + content + "&output=html&src=" + appName);
-        Intent loction = new Intent(Intent.ACTION_VIEW, mapUri);
-        activity.startActivity(loction);
+                                            String appName, String title, String content, boolean useOutWeb) {
+        if ( useOutWeb ) {
+            Uri mapUri = Uri.parse("http://api.map.baidu.com/marker?location=" + latitude + "," + longitude +
+                    "&title=" + title + "&content=" + content + "&output=html&src=" + appName);
+            Intent loction = new Intent(Intent.ACTION_VIEW, mapUri);
+            activity.startActivity(loction);
+        } else {
+            TbWebViewActivity.startActivity(activity, title, "http://api.map.baidu.com/marker?location=" + latitude + "," + longitude +
+                    "&title=" + title + "&content=" + content + "&output=html&src=" + appName);
+        }
     }
 
     /**
      * 打开网页版 导航
      *
      * @param activity
-     * @param region      当给定region时，认为起点和终点都在同一城市，除非单独给定起点或终点的城市。
+     * @param region    当给定region时，认为起点和终点都在同一城市，除非单独给定起点或终点的城市。
+     * @param appName
+     * @param useOutWeb 是否调用外部的浏览器 默认不调用
+     */
+    public static void openBrosserNaviMap(Context activity, String sLongitude, String sLatitude,
+                                          String sName, String dLongitude, String dLatitude, String dName, String region, String appName, boolean useOutWeb) {
+        if ( useOutWeb ) {
+            Uri mapUri = Uri.parse("http://api.map.baidu.com/direction?origin=latlng:" +
+                    sLatitude + "," + sLongitude + "|name:" + sName + "&destination=latlng:" +
+                    dLatitude + "," + dLongitude + "|name:" + dName + "&mode=driving&region=" + region +
+                    "&output=html&src=" + appName);
+            Intent loction = new Intent(Intent.ACTION_VIEW, mapUri);
+            activity.startActivity(loction);
+        } else {
+            TbWebViewActivity.startActivity(activity, "导航", "http://api.map.baidu.com/direction?origin=latlng:" +
+                    sLatitude + "," + sLongitude + "|name:" + sName + "&destination=latlng:" +
+                    dLatitude + "," + dLongitude + "|name:" + dName + "&mode=driving&region=" + region +
+                    "&output=html&src=" + appName);
+        }
+    }
+
+    /**
+     * 打开网页版 导航
+     *
+     * @param activity
+     * @param region   当给定region时，认为起点和终点都在同一城市，除非单独给定起点或终点的城市。
      * @param appName
      */
     public static void openBrosserNaviMap(Context activity, String sLongitude, String sLatitude,
                                           String sName, String dLongitude, String dLatitude, String dName, String region, String appName) {
-        Uri mapUri = Uri.parse("http://api.map.baidu.com/direction?origin=latlng:" +
-                sLatitude + "," + sLongitude + "|name:" + sName + "&destination=latlng:" +
-                dLatitude + "," + dLongitude + "|name:" + dName + "&mode=driving&region=" + region +
-                "&output=html&src=" + appName);
-        Intent loction = new Intent(Intent.ACTION_VIEW, mapUri);
-        activity.startActivity(loction);
+        openBrosserNaviMap(activity, sLongitude, sLatitude, sName, dLongitude, dLatitude, dName, region, appName, false);
     }
 
 

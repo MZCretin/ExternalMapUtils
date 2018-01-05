@@ -19,11 +19,12 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textColor="@color/red"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="展示目标坐标点位置(单点展示)："
+                android:text="展示目标坐标点位置(单点展示，检测APP，没有则外部浏览器打开，有则提示选择APP)："
                 android:textSize="12sp"
                 />
 
@@ -130,6 +131,231 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textColor="@color/red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="展示目标坐标点位置(单点展示，检测APP，没有则内部WebView打开，有则提示选择APP)："
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_showMarker_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="展示效果"
+                android:textColor="#ff7f0c"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="经纬度(long,lat)："
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/ed_ll_marker_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入目标地点经纬度"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="113.933012,22.538673"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EFEFF4"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="地名："
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:id="@+id/ed_name_marker_inner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="请输入地名"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="田厦·国际中心"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="描述："
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:id="@+id/ed_des_marker_inner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="请输入地点描述"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="桃园路8号"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EFEFF4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="展示目标坐标点位置(单点展示，强制(内或外)浏览器打开，不检测本地是否有APP)："
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_showMarker_force"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="展示效果"
+                android:textColor="#ff7f0c"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="经纬度(long,lat)："
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/ed_ll_marker_force"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入目标地点经纬度"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="113.933012,22.538673"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EFEFF4"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="地名："
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:id="@+id/ed_name_marker_force"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="请输入地名"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="田厦·国际中心"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="描述："
+                    android:textSize="12sp"/>
+
+                <EditText
+                    android:id="@+id/ed_des_marker_force"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="请输入地点描述"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="桃园路8号"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EFEFF4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/red"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -267,6 +493,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textColor="@color/red"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -378,11 +605,12 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textColor="@color/red"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="调起网页版导航："
+                android:text="调起网页版导航：(外部浏览器调起)"
                 android:textSize="12sp"
                 />
 
@@ -507,6 +735,149 @@
                 android:text="深圳大学"
                 android:textSize="12sp"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EFEFF4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textColor="@color/red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="调起网页版导航：(内部WebView调起)"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_showNavi_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="展示效果"
+                android:textColor="#ff7f0c"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="起点经纬度(long,lat)："
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/ed_s_ll_navi_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入起点经纬度"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="113.933012,22.538673"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EFEFF4"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="起点地名："
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/ed_s_name_navi_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入起点地名"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="田厦·国际中心"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EFEFF4"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="终点经纬度(long,lat)："
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/ed_d_ll_navi_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入终点经纬度"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="113.942501,22.539013"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EFEFF4"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="终点地名："
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/ed_d_name_navi_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入终点地名"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="深圳大学"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#EFEFF4"/>
 
         <View
             android:layout_width="match_parent"

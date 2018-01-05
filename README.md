@@ -1,11 +1,19 @@
-#ExternalMapuUilsLibrary
+# ExternalMapuUilsLibrary
 
-##最新版本V1.0.0
+## 最新版本V1.0.0
 png文件夹下有截图文件 自行查看
 
 ![image](https://github.com/MZCretin/ExternalMapUtils/blob/master/png/Screenshot_20170509-152819.png)
 
-##使用方式：
+![视频](https://github.com/MZCretin/ExternalMapUtils/blob/master/movie/movie.mp4)
+
+## 更新说明(2018年01月05日14:46:39)
+
+   + 考虑到每次跳转浏览器可能会被浏览器的推送或资讯带走客户，体验不佳，所以添加了App内部WebView展示地图的功能；
+   + 新增几个不同的方法，现在可以自由的控制：是否检测本地是否有地图类APP；内部WebView显示地图还是外部浏览器
+
+
+## 使用方式：
 
 -------------------
 
@@ -36,12 +44,14 @@ OpenExternalMapAppUtils.openMapNavi(this, longitude, latitude, name, des, "测�
 ```
 
 
-##使用说明
+## 使用说明
 
 我只是简单的对百度和高度的Uri使用方式进行了一个简单的归纳和总结，只是为了使用起来更加方便，开发者就应该全力注重业务逻辑，而不是花时间东找西找。所以做个简单集成。
 
 
-####有什么意见或者建议欢迎与我交流，觉得不错欢迎Star
+#### 有什么意见或者建议欢迎与我交流，觉得不错欢迎Star
 
-使用过程中如果有什么问题或者建议 欢迎在issue中提出来或者直接联系我 792075058 嘿嘿
+我叫Cretin，我是可爱的小男孩
+
+使用过程中如果有什么问题或者建议 欢迎在issue中提出来或者直接联系我 QQ:792075058 添加好友请说明来意  嘿嘿
 
