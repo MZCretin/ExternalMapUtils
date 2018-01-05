@@ -5,7 +5,7 @@ png文件夹下有截图文件 自行查看
 
 ![image](https://github.com/MZCretin/ExternalMapUtils/blob/master/png/Screenshot_20170509-152819.png)
 
-![视频](https://github.com/MZCretin/ExternalMapUtils/blob/master/movie/movie.mp4)
+![视频](https://github.com/MZCretin/ExternalMapUtils/blob/master/movie/)
 
 ## 更新说明(2018年01月05日14:46:39)
 
@@ -24,7 +24,7 @@ allprojects { repositories { ... maven { url 'https://jitpack.io' } } }
 
 **Step 2.** Add the dependency
 ```gradle
-dependencies { compile 'com.github.MZCretin:ExternalMapUtils:v1.0.0' }
+dependencies { compile 'com.github.MZCretin:ExternalMapUtils:v1.1.0' }
 ```
 
 **Step 3.** Start using it wherever you want as below.
