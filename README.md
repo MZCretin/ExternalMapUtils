@@ -29,19 +29,28 @@ dependencies { compile 'com.github.MZCretin:ExternalMapUtils:v1.1.0' }
 
 **Step 3.** Start using it wherever you want as below.
 
-```
+ ```java
 //打开路径规划
 OpenExternalMapAppUtils.openMapDirection(this, split[0], split[1], sName,
                 split1[0], split1[1], dName, "测试DEMO");
-//打开marker一个点   
-OpenExternalMapAppUtils.openMapMarker(this, longitude, latitude, name, des, "测试DEMO");
-//打开网页版导航
+
+//打开marker一个点  useOutWeb 是否在没有app的情况下使用外部浏览器 默认使用WebView打开
+OpenExternalMapAppUtils.openMapMarker(this, longitude, latitude, name, des, "测试DEMO",useOutWeb);
+
+/**
+  *   打开marker一个点  useOutWeb 是否在没有app的情况下使用外部浏览器 默认使用WebView打开
+  *   forceBro ture 不检测是否有APP，直接用网页打开
+  */
+OpenExternalMapAppUtils.openMapMarker(this, longitude, latitude, name, des, "测试DEMO",useOutWeb,forceBro);
+
+//打开网页版导航 useOutWeb 是否在没有app的情况下使用外部浏览器 默认使用WebView打开
 OpenExternalMapAppUtils.openBrosserNaviMap(this, split[0], split[1], sName,
-                split1[0], split1[1], dName, "深圳", "测试DEMO");
+                split1[0], split1[1], dName, "深圳", "测试DEMO"，useOutWeb);
+
 //打开app端导航 使用高德和百度
 OpenExternalMapAppUtils.openMapNavi(this, longitude, latitude, name, des, "测试DEMO");
                 
-```
+ ```
 
 
 ## 使用说明
